@@ -9,7 +9,7 @@ sql`
   CREATE TABLE client (
     id          TEXT,
     name        TEXT,
-    contact     TEXT,
+    email       TEXT,
     cpf         VARCHAR(11) PRIMARY KEY CHECK (cpf ~ '^[0-9]{11}$')
   );
 `.then(() => {
