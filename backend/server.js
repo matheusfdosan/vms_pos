@@ -9,6 +9,6 @@ server.listen(
   },
   (err) => {
     if (err) throw err
-    console.log("Servidor rodando na porta 3000")
+    console.log("Servidor rodando na porta", PORT)
   }
 )
