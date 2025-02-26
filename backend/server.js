@@ -1,6 +1,10 @@
 import fastify from "fastify"
 const server = fastify({ logger: true })
 import { PORT } from "./envVariables.js"
+import allRoutes from "./src/configs/routes.js"
+
+// Registrando todas as rotas
+server.register(allRoutes)
 
 server.listen(
   {
