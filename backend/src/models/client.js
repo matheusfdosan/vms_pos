@@ -7,13 +7,12 @@ import { sql } from "../configs/database.js"
 
 sql`
   CREATE TABLE client (
-    id          TEXT,
     name        TEXT,
     email       TEXT,
-    cpf         VARCHAR(11) PRIMARY KEY CHECK (cpf ~ '^[0-9]{11}$')
+    cpf         VARCHAR(11) PRIMARY KEY CHECK (cpf ~ '^[0-9]{11}$') 
   );
 `.then(() => {
-  console.log("Table product was created!")
+  console.log("Table client was created!")
   process.exit()
 })
   

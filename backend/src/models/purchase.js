@@ -7,15 +7,13 @@ import { sql } from "../configs/database.js"
 
 sql`
   CREATE TABLE purchase (
-    id          TEXT PRIMARY KEY,
+    id          SERIAl PRIMARY KEY,
     items       JSONB,
     total       TEXT,
     client_CPF   TEXT,
     FOREIGN KEY (client_CPF) REFERENCES client (cpf)
   );
-`
-  .then(() => {
-    console.log("Table purchase was created!")
-    process.exit()
-  })
-
+`.then(() => {
+  console.log("Table purchase was created!")
+  process.exit()
+})
