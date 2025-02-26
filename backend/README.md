@@ -1,30 +1,20 @@
 # VM Softwares - POS - Backend
 
 ## Rotas Clientes
-[] Mostrar todos os clientes *GET /client/all*
-
-[] Mostrar um cliente *GET /client/:id*
-
-[x] Novo cliente *POST /client/add*
-
-[] Alterar informação (nome, telefone/email) *PUT /client/:id*
-
+[] Mostrar todos os clientes *GET /client/all*<br>
+[] Mostrar um cliente *GET /client/:id*<br>
+[x] Novo cliente *POST /client/add*<br>
+[] Alterar informação (nome, telefone/email) *PUT /client/:id*<br>
 [] Deletar Cliente *DELETE /client/:id*
 
 ## Rotas Catalogos
-[] Mostrar todos os produtos *GET /product/all*
-
-[] Mostrar um produto *GET /product/:id*
-
-[] Adicionar produto *POST /product/add*
-
-[] Alterar produto (nome, preço, estoque) *PUT /product/:id*
-
+[] Mostrar todos os produtos *GET /product/all*<br>
+[] Mostrar um produto *GET /product/:id*<br>
+[] Adicionar produto *POST /product/add*<br>
+[] Alterar produto (nome, preço, estoque) *PUT /product/:id*<br>
 [] Deletar produto *DELETE /product/:id*
 
 ## Rotas Compras
-[] Mostrar todas as compras *GET /purchase/log*
-
-[] Pagamentos (ao efetuar pagamento, adicionar no log de compras e mostrar nota fiscal) *POST /purchase/add*
-
+[] Mostrar todas as compras *GET /purchase/log*<br>
+[] Pagamentos (ao efetuar pagamento, adicionar no log de compras e mostrar nota fiscal) *POST /purchase/add*<br>
 [] Deletar log (caso queira devolver algum item com nota fiscal) *PUT /purchase/:id*
