@@ -1,7 +1,7 @@
 # VM Softwares - POS - Backend
 
 ## Rotas Clientes
-[] Mostrar todos os clientes *GET /client/all*<br>
+[x] Mostrar todos os clientes *GET /client/all*<br>
 [x] Mostrar um cliente *GET /client/:id*<br>
 [x] Novo cliente *POST /client/add*<br>
 [] Alterar informação (nome, telefone/email) *PUT /client/:id*<br>
