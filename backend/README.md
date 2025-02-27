@@ -2,7 +2,7 @@
 
 ## Rotas Clientes
 [] Mostrar todos os clientes *GET /client/all*<br>
-[] Mostrar um cliente *GET /client/:id*<br>
+[x] Mostrar um cliente *GET /client/:id*<br>
 [x] Novo cliente *POST /client/add*<br>
 [] Alterar informação (nome, telefone/email) *PUT /client/:id*<br>
 [] Deletar Cliente *DELETE /client/:id*
