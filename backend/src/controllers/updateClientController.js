@@ -1,6 +1,6 @@
 import updateClientService from "../services/updateClientService.js"
 
-export default async function updateClientController(req, res) {
+export default async (req, res) => {
   const clientCPF = req.params.id
   const updatedInfo = req.body
 

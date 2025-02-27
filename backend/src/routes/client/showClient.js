@@ -1,5 +1,5 @@
 import showClientController from "../../controllers/showClientController.js"
 
-export default async (fastify) => {
-  fastify.get("/client/:id", showClientController)
+export default async (server) => {
+  server.get("/client/:id", showClientController)
 }

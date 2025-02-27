@@ -9,6 +9,6 @@ export default async function showClientService(clientCPF) {
       body: clientInfo,
     }
   } catch (err) {
-    if (err) throw { status: 400, message: "Error to create client!" + err }
+    if (err) throw { status: 400, message: "Error to show client!" + err }
   }
 }

@@ -9,6 +9,6 @@ export default async function showAllClientsService() {
       body: allClients,
     }
   } catch (err) {
-    
+    if (err) throw { status: 400, message: "Error to show all client!" + err }
   }
 }
