@@ -8,6 +8,7 @@ import { sql } from "../configs/database.js"
 sql`
   CREATE TABLE product (
     id          TEXT PRIMARY KEY,
+    img         TEXT,
     name        TEXT,
     price       TEXT,
     stock       INTEGER
