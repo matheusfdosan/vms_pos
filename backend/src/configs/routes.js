@@ -6,6 +6,7 @@ import updateClient from "../routes/client/updateClient.js"
 import deleteClient from "../routes/client/deleteClient.js"
 import newProduct from "../routes/catalog/newProduct.js"
 import showProduct from "../routes/catalog/showProduct.js"
+import showAllProducts from "../routes/catalog/showAllProducts.js"
 
 // Registrando todas as rotas
 async function allRoutes(server) {
@@ -18,6 +19,7 @@ async function allRoutes(server) {
   // CATÁLOGO
   server.register(newProduct)
   server.register(showProduct)
+  server.register(showAllProducts)
 }
 
 export default fastifyPlugin(allRoutes)
