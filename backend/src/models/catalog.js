@@ -8,10 +8,10 @@ import { sql } from "../configs/database.js"
 sql`
   CREATE TABLE product (
     id          TEXT PRIMARY KEY,
-    img         TEXT,
-    name        TEXT,
-    price       TEXT,
-    stock       INTEGER
+    img         TEXT NOT NULL,
+    name        TEXT NOT NULL,
+    price       DECIMAL(10, 2) NOT NULL,
+    stock       INTEGER NOT NULL
   );
 `
   .then(() => {

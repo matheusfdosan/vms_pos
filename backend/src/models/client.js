@@ -7,8 +7,8 @@ import { sql } from "../configs/database.js"
 
 sql`
   CREATE TABLE client (
-    name        TEXT,
-    email       TEXT,
+    name        TEXT NOT NULL,
+    email       TEXT NOT NULL,
     cpf         VARCHAR(11) PRIMARY KEY CHECK (cpf ~ '^[0-9]{11}$') 
   );
 `.then(() => {
