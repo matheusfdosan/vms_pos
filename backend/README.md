@@ -12,7 +12,7 @@
 [x] Mostrar um produto *GET /product/:id*<br>
 [x] Adicionar produto *POST /product/add*<br>
 [x] Alterar produto (nome, preço, estoque) *PUT /product/:id*<br>
-[] Deletar produto *DELETE /product/:id*
+[x] Deletar produto *DELETE /product/:id*
 
 ## Rotas Compras
 [] Mostrar todas as compras *GET /purchase/log*<br>
