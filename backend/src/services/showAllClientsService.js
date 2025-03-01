@@ -1,4 +1,4 @@
-import {sql} from "../configs/database.js"
+import { sql } from "../configs/database.js"
 
 export default async function showAllClientsService() {
   try {
