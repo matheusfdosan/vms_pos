@@ -1,12 +1,12 @@
 import { fastifyPlugin } from "fastify-plugin"
-// IMPORTAÇÕES DOS CLIENTES 
+// IMPORTAÇÕES DOS CLIENTES
 import newClient from "../routes/client/newClient.js"
 import showClient from "../routes/client/showClient.js"
 import showAllClients from "../routes/client/showAllClients.js"
 import updateClient from "../routes/client/updateClient.js"
 import deleteClient from "../routes/client/deleteClient.js"
 
-// IMPORTAÇÕES DOS PRODUTOS 
+// IMPORTAÇÕES DOS PRODUTOS
 import newProduct from "../routes/catalog/newProduct.js"
 import showProduct from "../routes/catalog/showProduct.js"
 import showAllProducts from "../routes/catalog/showAllProducts.js"
