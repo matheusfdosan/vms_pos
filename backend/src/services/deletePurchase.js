@@ -11,4 +11,3 @@ export default async function deletePurchase(id){
         if (err) throw { status: 400, message: "Error to delete client!" + err }
       }
 }
-
