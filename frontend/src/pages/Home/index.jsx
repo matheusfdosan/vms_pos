@@ -29,9 +29,9 @@ function Home() {
         </div>
       </header>
 
-      <button className="flip_button">
+      <a href="/dashboard"  className="flip_button">
         <img src={flip_icon} alt="" />
-      </button>
+      </a>
 
       <main>
         <div className="main-container">

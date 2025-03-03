@@ -42,7 +42,6 @@ main {
   display: flex;
   justify-content: right;
   align-items: center;
-  padding: 10px;
   border-radius: 80px;
   width: 60px;
   height: 60px;
@@ -51,6 +50,7 @@ main {
 .flip_button img {
   width: 15px;
   height: 15px;
+  margin-right: 10px;
 }
 
 main .main-container {
