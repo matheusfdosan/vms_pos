@@ -15,6 +15,7 @@ import deleteProduct from "../routes/catalog/deleteProduct.js"
 
 //IMPORTAÇÕES DAS COMPRAS
 import payment from "../routes/purchases/payment.js"
+import showPayments from "../routes/purchases/showPayments.js"
 
 // Registrando todas as rotas
 async function allRoutes(server) {
@@ -34,6 +35,7 @@ async function allRoutes(server) {
 
   //COMPRAS
   server.register(payment)
-}
+  server.register(showPayments)
+} 
 
 export default fastifyPlugin(allRoutes)
