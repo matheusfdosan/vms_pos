@@ -7,10 +7,10 @@ import { sql } from "../configs/database.js"
 
 sql`
   CREATE TABLE purchase (
-    id            SERIAl PRIMARY KEY,
+    id            SERIAL PRIMARY KEY,
     items         JSONB NOT NULL,
     total         DECIMAL(10, 2) NOT NULL,
-    client_CPF    TEXT NOT NULL,
+    client_CPF    TEXT NOT NULL,  
     FOREIGN KEY (client_CPF) REFERENCES client (cpf)
   );
 `.then(() => {

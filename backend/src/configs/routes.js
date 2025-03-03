@@ -13,6 +13,9 @@ import showAllProducts from "../routes/catalog/showAllProducts.js"
 import updateProduct from "../routes/catalog/updateProduct.js"
 import deleteProduct from "../routes/catalog/deleteProduct.js"
 
+//IMPORTAÇÕES DAS COMPRAS
+import payment from "../routes/purchases/payment.js"
+
 // Registrando todas as rotas
 async function allRoutes(server) {
   // CLIENTES
@@ -28,6 +31,9 @@ async function allRoutes(server) {
   server.register(showAllProducts)
   server.register(updateProduct)
   server.register(deleteProduct)
+
+  //COMPRAS
+  server.register(payment)
 }
 
 export default fastifyPlugin(allRoutes)

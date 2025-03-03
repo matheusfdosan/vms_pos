@@ -15,7 +15,8 @@
     "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
     "fastify-plugin": "^5.0.1",
-    "postgres": "^3.4.5"
+    "postgres": "^3.4.5",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
