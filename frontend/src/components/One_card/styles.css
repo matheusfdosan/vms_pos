@@ -1,0 +1,84 @@
+.Card {
+  border-bottom: 0.1px solid #6a686885;
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 90%;
+  padding: 10px 0;
+  justify-content: space-between;
+}
+
+.Pr_icon_info {
+  display: flex;
+  gap: 10px;
+}
+
+.Pr_icon {
+  width: 55px;
+  height: 56px;
+  background-color: #f0f0f0;
+}
+
+.Pr_info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.Pr_name {
+  color: #222831;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.Pr_sub {
+  color: #60626e;
+  font-size: 12px;
+}
+
+.Pr_amount {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  gap: 5px;
+}
+
+.Pr_amount span {
+  text-align: right;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.buttons span {
+  margin: auto;
+  font-size: 19px;
+}
+
+.buttonP {
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  display: flex;
+  background-color: #5d5fef;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttonP img {
+  width: 25px;
+  height: 25px;
+}
