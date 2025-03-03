@@ -1,5 +1,5 @@
 import newClientController from "../../controllers/showPurchaseController.js"
 
 export default async (server) => {
-  server.post("/purchase/show", newClientController)
+  server.get("/purchase/show", newClientController)
 }
