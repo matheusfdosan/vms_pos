@@ -1,0 +1,114 @@
+.product-card{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    padding: 10px 0;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    align-items:  center;
+    margin: auto;
+}
+
+.P_img{
+    width: 60px ;
+    height: 60px ;
+}
+
+.Pinfo{
+  display: flex;
+  flex-direction: row;
+  color: #60626E;
+  margin-right: 20px;
+  gap: 10px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    gap: 8px;
+}
+
+.sub_1{
+    color: #222831;
+    font-size: 17px;
+}
+
+.Edit_btn{
+width: 75px;
+height: 50px;  
+background-color: #4144FB;
+border: none;
+border-radius: 9px;
+cursor: pointer;
+}
+
+.Edit_btn img {
+    width: 28px ;
+    height: 28px ;
+}
+
+.Delete_btn img {
+    width: 28px ;
+    height: 28px ;
+}
+
+.Delete_btn{
+    width: 75px;
+    height: 50px; 
+    border: none;
+    background-color: #FB4144;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.Edit_form{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFF;
+    position: absolute;
+    width: 200px;
+    height: fit-content;
+    border-radius: 10px;
+    gap: 10px;
+    padding: 35px;
+    font-size: 12px;
+    color: #4F4F4F;
+    top: 260px;
+    left: 780px;
+    box-shadow: 0px 0px 56px -5px rgba(184, 184, 184, 1);
+    -webkit-box-shadow: 0px 0px 56px -5px rgba(184, 184, 184, 1);
+    -moz-box-shadow: 0px 0px 56px -5px rgba(184, 184, 184, 1);
+    border-top-left-radius: 10px ;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius: 10px;
+}
+
+.Edit_form{
+    border: 2px solid #5d5fef52;
+}
+
+.title{
+    font-size: 18px;
+    color: #4F4F4F;
+}
+
+.Btn_form {
+    color: #f2f2f2;
+    background-color: #5d5fef;
+    border: none;
+    font-size: 15px;
+    border-radius: 7px;
+    width: 195px;
+    height: 35px;
+    cursor: pointer;
+    margin: auto;
+}

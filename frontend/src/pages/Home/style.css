@@ -67,6 +67,7 @@ main .main-container {
 .Purchase_c {
   display: flex;
   flex-direction: column;
+  margin-bottom: 200px;
   gap: 30px;
   width: 50%;
 }
