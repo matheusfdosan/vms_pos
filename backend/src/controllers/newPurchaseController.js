@@ -1,5 +1,5 @@
 import searchPrice from "../services/searchPrice.js"
-import savePurchase from "../services/SavePurchase.js"
+import savePurchase from "../services/savePurchase.js"
 export default async (req, res) => {
     const {cpf, orders} = req.body
     let total=0
