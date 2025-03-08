@@ -1,10 +1,10 @@
 import { sql } from "../configs/database.js"
 
 export default async function updateProductService(productId, updatedInfo) {
-  const { img, name, price, stock } = updatedInfo
+  const { newId, img, name, price, stock } = updatedInfo
 
   try {
-    await sql`UPDATE product SET img = ${img}, name = ${name}, price = ${price}, stock = ${stock} WHERE id = ${productId}`
+    await sql`UPDATE product SET id = ${newId}, img = ${img}, name = ${name}, price = ${price}, stock = ${stock} WHERE id = ${productId}`
     return {
       status: 200,
       message: "Product successfully updated!",

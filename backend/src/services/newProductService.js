@@ -1,8 +1,7 @@
 import { sql } from "../configs/database.js"
-import { randomUUID } from "node:crypto"
 
 export default async function newProductService(productsData) {
-  const id = randomUUID()
+  const id = Math.floor(10000 + Math.random() * 90000)
   const { img, name, price, stock } = productsData
 
   try {
