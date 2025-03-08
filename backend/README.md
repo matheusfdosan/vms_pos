@@ -55,9 +55,9 @@ Ele permite o cadastro, edição e remoção de produtos, além de realizar o co
 - [x] Deletar produto *DELETE /product/:id*
 
 #### 🛒 Rotas Compras
-- [ ] Mostrar todas as compras *GET /purchase/log*
-- [ ] Pagamentos (ao efetuar pagamento, adicionar no log de compras e mostrar nota fiscal) *POST /purchase/add*
-- [ ] Deletar log (caso queira devolver algum item com nota fiscal) *PUT /purchase/:id*
+- [x] Mostrar todas as compras *GET /purchase/log*
+- [x] Pagamentos (ao efetuar pagamento, adicionar no log de compras e mostrar nota fiscal) *POST /purchase/add*
+- [x] Deletar log (caso queira devolver algum item com nota fiscal) *DELETE /purchase/:id*
 
 ## 👨‍💻 Contribuidores
 
