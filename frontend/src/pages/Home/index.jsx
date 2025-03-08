@@ -13,12 +13,28 @@ import Payment_imgs from "../../components/Payment_imgs"
 import Payment_Pix from "../../components/Payment_Pix"
 import Payment_Money from "../../components/Payment_Money"
 import Payment_Credit from "../../components/Payment_Credit"
+import getProduct from "../../utils/getProduct"
 
 function Home() {
   const [isOpen, setisOpen] = useState(false)
   const [isPaid, setIsPaid] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState("debit")
   const [showForm, setShowForm] = useState(false)
+  const [productCode, setProductCode] = useState()
+  const [message, setMessage] = useState("")
+  const [products, setProducts] = useState([])
+
+  const handleAddProduct = () => {
+    if (productCode.length == 0 || productCode.length < 5) {
+      setMessage("O código deve conter 5 dígitos")
+    } else {
+      setMessage("")
+      const productRaw = getProduct(productCode)
+      setProducts(products.push(productRaw))
+      console.log(products);
+      // localStorage.setItem("products")
+    }
+  }
 
   return (
     <>
@@ -29,7 +45,7 @@ function Home() {
         </div>
       </header>
 
-      <a href="/dashboard"  className="flip_button">
+      <a href="/dashboard" className="flip_button">
         <img src={flip_icon} alt="" />
       </a>
 
@@ -38,11 +54,22 @@ function Home() {
           <div className="Purchase_c">
             <div className="codeInput">
               <p>Codigo do Produto:</p>
-              <input type="text" />
+              <input
+                type="number"
+                placeholder="12345"
+                value={productCode}
+                onChange={({ target }) => {
+                  if (/^\d{0,5}$/.test(target.value))
+                    setProductCode(target.value)
+                }}
+              />
+              <span id="msg">{message}</span>
             </div>
 
             <div className="btns">
-              <button className="add_btn">Adicionar</button>
+              <button className="add_btn" onClick={handleAddProduct}>
+                Adicionar
+              </button>
               <Btn name={"Finalizar Compra"} f={() => setisOpen(true)} />
             </div>
           </div>

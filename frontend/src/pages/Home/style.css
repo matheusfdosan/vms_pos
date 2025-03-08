@@ -79,11 +79,19 @@ main .main-container {
 }
 
 .codeInput input {
-  width: 100%;
+  display: block;
+  min-width: 300px;
   height: 40px;
   border-radius: 5px;
   border: 2px solid #5d5fef6b;
+  padding-left: 10px;
 }
+
+#msg {
+  color: #f83e3e;
+  
+}
+
 
 .btns {
   display: flex;
