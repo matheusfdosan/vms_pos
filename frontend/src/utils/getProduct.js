@@ -1,10 +1,14 @@
-import axios from "axios"
-
 export default async function getProduct(code) {
   try {
-    const productRaw = await axios.get("teste" + code)
-    console.log(productRaw.data)
+    const response = await fetch(`${code}`);
+    if (!response.ok) {
+      throw new Error(`Erro na requisição: ${response.status}`);
+    }
+    const productData = await response.json();
+    console.log("Dados do produto:", productData);
+    return productData;
   } catch (err) {
-    console.log(err)
+    console.error("Erro ao buscar produto:", err);
+    return null; // Ou outra estratégia de fallback
   }
 }

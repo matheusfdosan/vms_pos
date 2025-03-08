@@ -20,18 +20,18 @@ function Home() {
   const [isPaid, setIsPaid] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState("debit")
   const [showForm, setShowForm] = useState(false)
-  const [productCode, setProductCode] = useState()
+  const [productCode, setProductCode] = useState("")
   const [message, setMessage] = useState("")
   const [products, setProducts] = useState([])
 
-  const handleAddProduct = () => {
+  const handleAddProduct = async () => {
     if (productCode.length == 0 || productCode.length < 5) {
       setMessage("O código deve conter 5 dígitos")
     } else {
       setMessage("")
-      const productRaw = getProduct(productCode)
-      setProducts(products.push(productRaw))
-      console.log(products);
+      const productRaw = await getProduct(productCode)
+      // setProducts(products.push(productRaw))
+      // console.log(products);
       // localStorage.setItem("products")
     }
   }
