@@ -1,7 +1,8 @@
 import fastifyPlugin from "fastify-plugin"
+import cors from "@fastify/cors"
 
 async function corsConfigs(server) {
-  server.register(require("@fastify/cors"), {
+  server.register(cors, {
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
