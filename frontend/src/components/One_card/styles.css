@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: row;
   margin: auto;
+  gap: 15px;
   width: 90%;
   padding: 10px 0;
   justify-content: space-between;
@@ -14,6 +15,7 @@
 
 .Pr_icon_info {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
@@ -26,13 +28,18 @@
 .Pr_info {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 .Pr_name {
   color: #222831;
   font-size: 14px;
   font-weight: bold;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .Pr_sub {
@@ -43,12 +50,15 @@
 .Pr_amount {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   font-size: 12px;
-  gap: 5px;
+  gap: 10px;
 }
 
-.Pr_amount span {
+.Pr_amount > span {
   text-align: right;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .buttons {

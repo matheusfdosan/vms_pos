@@ -1,11 +1,11 @@
 import React, { useState } from "react"
+import BrazilReal from "../../utils/monetaryFormat"
 import "./styles.css"
-import milk_img from "../../assets/milk_img.png"
 import Plus_icon from "../../assets/Plus_icon.png"
 import Minus_icon from "../../assets/Minus_icon.png"
 
-function One_card({ noAmountOn }) {
-  const [amount, setAmount] = useState(0)
+function One_card({ noAmountOn, data }) {
+  const [amount, setAmount] = useState(1)
 
   const handleMoreProducts = () => {
     setAmount(amount + 1)
@@ -17,15 +17,16 @@ function One_card({ noAmountOn }) {
     }
   }
 
+
   return (
     <div className="Card">
       <div className="card-container">
         <div className="Pr_icon_info">
-          <img src={milk_img} alt="" className="Pr_icon" />
+          <img src={data.img} alt="" className="Pr_icon" />
           <div className="Pr_info">
-            <span className="Pr_name">Leite Jussara</span>
-            <span className="Pr_sub">Código: 02394</span>
-            <span className="Pr_sub">R$ 4,50</span>
+            <span className="Pr_name">{data.name}</span>
+            <span className="Pr_sub">Código: {data.id}</span>
+            <span className="Pr_sub">{BrazilReal.format(data.price)}</span>
           </div>
         </div>
 
@@ -40,11 +41,11 @@ function One_card({ noAmountOn }) {
                 <img src={Minus_icon} alt="" />
               </button>
             </div>
-            <span>
-              <strong>R$4,50</strong>
-            </span>
+            <span>{BrazilReal.format(data.price * amount)}</span>
           </div>
-        ) : ""}
+        ) : (
+          ""
+        )}
       </div>
     </div>
   )

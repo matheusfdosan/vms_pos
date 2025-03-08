@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./style.css"
 
 //Imagens
@@ -30,9 +30,35 @@ function Home() {
     } else {
       setMessage("")
       const productRaw = await getProduct(productCode)
-      // setProducts(products.push(productRaw))
-      // console.log(products);
-      // localStorage.setItem("products")
+
+      if (productRaw === undefined) {
+        setMessage("Digite um código válido!")
+      } else {
+        setProducts((prev) => [...prev, productRaw])
+      }
+    }
+  }
+
+  const handleFinalizePurchase = () => {
+    setisOpen(true)
+  }
+
+  const handleRemoveProduct = () => {
+    if (productCode.length == 0 || productCode.length < 5) {
+      setMessage("O código deve conter 5 dígitos")
+    } else {
+      setMessage("")
+      if (!products.find((product) => product.id === productCode)) {
+        setMessage("Digite um código válido!")
+      } else {
+        const getIndex = products.map((product, index) => {
+          if (product.id === productCode) {
+            return index
+          }
+        })
+        const updatedProducts = products.filter((_, index) => index !== getIndex[0]);
+        setProducts(updatedProducts);
+      }
     }
   }
 
@@ -70,10 +96,17 @@ function Home() {
               <button className="add_btn" onClick={handleAddProduct}>
                 Adicionar
               </button>
-              <Btn name={"Finalizar Compra"} f={() => setisOpen(true)} />
+              <button className="add_btn" onClick={handleRemoveProduct}>
+                Remover
+              </button>
             </div>
+            <Btn name={"Finalizar Compra"} f={handleFinalizePurchase} />
           </div>
-          <P_card cardsHeight="400px" noAmount={true} />
+          <P_card
+            productsInfo={products}
+            cardsHeight="400px"
+            noAmount={false}
+          />
         </div>
       </main>
 
@@ -177,7 +210,11 @@ function Home() {
                 />
               )}
             </div>
-            <P_card cardsHeight="100%" noAmount={false} />
+            <P_card
+              cardsHeight="100%"
+              productsInfo={products}
+              noAmount={false}
+            />
           </div>
         </div>
       )}

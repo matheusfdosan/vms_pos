@@ -1,14 +1,16 @@
+import axios from "axios"
+
 export default async function getProduct(code) {
   try {
-    const response = await fetch(`${code}`);
-    if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.status}`);
-    }
-    const productData = await response.json();
-    console.log("Dados do produto:", productData);
-    return productData;
+    const apiUrl = import.meta.env.VITE_MAIN_URL;
+    const productRaw = await axios({
+      method: "GET",
+      url: `${apiUrl}product/${code}`,
+    })
+    return productRaw.data.body[0]
   } catch (err) {
-    console.error("Erro ao buscar produto:", err);
-    return null; // Ou outra estratégia de fallback
+    console.error("Error to get product" + err)
+    return null
   }
 }
+

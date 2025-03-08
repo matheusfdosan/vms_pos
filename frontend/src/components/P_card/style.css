@@ -18,3 +18,27 @@
   word-wrap: nowrap;
 }
 
+#cards {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+
+#cards::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+#cards::-webkit-scrollbar-track {
+  background: #6e6e6eb7;
+}
+
+/* Handle */
+#cards::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
