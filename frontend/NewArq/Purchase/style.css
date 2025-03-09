@@ -1,0 +1,20 @@
+.Purchase{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    gap: 300px;
+    width: 840px;
+    height: 60px;
+    margin-bottom: -10px;
+}
+
+.invoice_btn{
+    background-color: #4144FB;
+    color: #FFFFFF;
+    border: none;
+    width: 140px;
+    height: 35px;
+    cursor: pointer;
+}
