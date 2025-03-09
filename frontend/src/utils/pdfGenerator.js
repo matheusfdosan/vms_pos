@@ -1,9 +1,8 @@
 import jsPDF from "jspdf"
 import BrazilReal from "./monetaryFormat"
 
-const generatePDF = (client, purchases) => {
+const generatePDF = (client, purchases, paymentMethod) => {
   const doc = new jsPDF()
-  console.log(client, purchases)
 
   doc.text("Lista de Produtos", 10, 10)
   purchases.forEach((purchase, index) => {
@@ -18,9 +17,14 @@ const generatePDF = (client, purchases) => {
 
   doc.text(`Cliente: ${client.name}`, 10, 20 + purchases.length * 10 + 10)
   doc.text(
-    `Total: ${BrazilReal.format(total)}`,
+    `Forma de Pagamento: ${paymentMethod}`,
     10,
     30 + purchases.length * 10 + 10
+  )
+  doc.text(
+    `Total: ${BrazilReal.format(total)}`,
+    10,
+    40 + purchases.length * 10 + 10
   )
 
   const date = new Date()

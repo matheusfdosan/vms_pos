@@ -15,11 +15,12 @@ import Payment_Money from "../../components/Payment_Money"
 import Payment_Credit from "../../components/Payment_Credit"
 import getProduct from "../../utils/getProduct"
 import generatePDF from "../../utils/pdfGenerator"
+import registerPurchase from "../../utils/registerPurchase"
 
 function Home() {
   const [isOpen, setisOpen] = useState(false)
   const [isPaid, setIsPaid] = useState(false)
-  const [paymentMethod, setPaymentMethod] = useState("debit")
+  const [paymentMethod, setPaymentMethod] = useState("Débito")
   const [showForm, setShowForm] = useState(false)
   const [productCode, setProductCode] = useState("")
   const [message, setMessage] = useState("")
@@ -64,14 +65,7 @@ function Home() {
 
   const handleDownloadInvoice = () => {
     try {
-      const invoicePdf =  generatePDF(client, products)
-      const blob = new Blob([invoicePdf], { type: 'application/pdf' })
-      const url = URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = 'invoice.pdf'
-      link.click()
-      URL.revokeObjectURL(url)
+      generatePDF(client, products, paymentMethod)
     } catch (error) {
       console.error('Error generating invoice PDF:', error)
     }
@@ -149,7 +143,7 @@ function Home() {
                   <button
                     disabled={isPaid}
                     className="method_btn"
-                    onClick={() => setPaymentMethod("debit")}
+                    onClick={() => setPaymentMethod("Débito")}
                     style={{
                       borderBottom: `.5px solid ${
                         paymentMethod === "debit" ? "#1e1e1e" : "transparent"
@@ -163,7 +157,7 @@ function Home() {
                   <button
                     disabled={isPaid}
                     className="method_btn"
-                    onClick={() => setPaymentMethod("credit")}
+                    onClick={() => setPaymentMethod("Crédito")}
                     style={{
                       borderBottom: `.5px solid ${
                         paymentMethod === "credit" ? "#1e1e1e" : "transparent"
@@ -177,7 +171,7 @@ function Home() {
                   <button
                     disabled={isPaid}
                     className="method_btn"
-                    onClick={() => setPaymentMethod("pix")}
+                    onClick={() => setPaymentMethod("Pix")}
                     style={{
                       borderBottom: `.5px solid ${
                         paymentMethod === "pix" ? "#1e1e1e" : "transparent"
@@ -191,7 +185,7 @@ function Home() {
                   <button
                     disabled={isPaid}
                     className="method_btn"
-                    onClick={() => setPaymentMethod("money")}
+                    onClick={() => setPaymentMethod("Dinheiro")}
                     style={{
                       borderBottom: `.5px solid ${
                         paymentMethod === "money" ? "#1e1e1e" : "transparent"
@@ -202,11 +196,11 @@ function Home() {
                   </button>
                 </li>
               </ul>
-              {paymentMethod == "debit" ? (
+              {paymentMethod == "Débito" ? (
                 <Payment_imgs paid={isPaid} />
-              ) : paymentMethod == "credit" ? (
+              ) : paymentMethod == "Crédito" ? (
                 <Payment_Credit paid={isPaid} />
-              ) : paymentMethod == "money" ? (
+              ) : paymentMethod == "Dinheiro" ? (
                 <Payment_Money paid={isPaid} />
               ) : (
                 <Payment_Pix paid={isPaid} />
@@ -238,6 +232,7 @@ function Home() {
                   name3="CPF"
                   name4="Enviar"
                   clientInfo={getClient}
+                  allProducts={products}
                   func={() => {
                     setIsPaid(true)
                     setShowForm(false)

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "./style.css"
 import registerClient from "../../utils/registerClient.js"
+import registerPurchase from "../../utils/registerPurchase.js"
 
 function Form(props) {
   const [form, setForm] = useState({
@@ -33,6 +34,7 @@ function Form(props) {
     } else {
       try {
         await registerClient(form)
+        await registerPurchase(form, props.allProducts)
         props.clientInfo(form)
         props.func()
       } catch (err) {
@@ -40,8 +42,6 @@ function Form(props) {
       }
     }
   }
-
-  
 
   return (
     <div className="Form">
