@@ -14,6 +14,7 @@ import Payment_Pix from "../../components/Payment_Pix"
 import Payment_Money from "../../components/Payment_Money"
 import Payment_Credit from "../../components/Payment_Credit"
 import getProduct from "../../utils/getProduct"
+import generatePDF from "../../utils/pdfGenerator"
 
 function Home() {
   const [isOpen, setisOpen] = useState(false)
@@ -23,6 +24,7 @@ function Home() {
   const [productCode, setProductCode] = useState("")
   const [message, setMessage] = useState("")
   const [products, setProducts] = useState([])
+  const [client, setClient] = useState()
 
   const handleAddProduct = async () => {
     if (productCode.length == 0 || productCode.length < 5) {
@@ -58,6 +60,25 @@ function Home() {
         setProducts(updatedProducts)
       }
     }
+  }
+
+  const handleDownloadInvoice = () => {
+    try {
+      const invoicePdf =  generatePDF(client, products)
+      const blob = new Blob([invoicePdf], { type: 'application/pdf' })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'invoice.pdf'
+      link.click()
+      URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error('Error generating invoice PDF:', error)
+    }
+  }
+
+  const getClient = (client) => {
+    setClient(client)
   }
 
   return (
@@ -192,11 +213,14 @@ function Home() {
               )}
 
               <div id="btns-cancel-end">
-                {isPaid && <Btn name={"Obter Nota Fiscal"} f={() => console.log("Nota Fiscal")}/>}
-                {!isPaid && <Btn name={"Finalizar Compra"} f={() => setShowForm(true)} />}
+                {isPaid && (
+                  <Btn name={"Obter Nota Fiscal"} f={handleDownloadInvoice} />
+                )}
 
-                {/* {!isPaid && <Btn name={"Obter Nota Fiscal"} f={() => setShowInvoice(true)} />} */}
-                
+                {!isPaid && (
+                  <Btn name={"Finalizar Compra"} f={() => setShowForm(true)} />
+                )}
+
                 <Btn
                   name={!isPaid ? "Cancelar Compra" : "Fechar"}
                   f={() => {
@@ -213,10 +237,10 @@ function Home() {
                   name2="Email"
                   name3="CPF"
                   name4="Enviar"
+                  clientInfo={getClient}
                   func={() => {
                     setIsPaid(true)
                     setShowForm(false)
-                    // função de nova compra
                   }}
                   func2={() => setShowForm(false)}
                 />

@@ -16,7 +16,7 @@ function Form(props) {
     if (name === "cpf") {
       const cpfRegex = /^\d{0,11}$/
       if (!cpfRegex.test(value)) {
-        return // Não atualiza o estado se o valor não for válido
+        return
       }
     }
 
@@ -33,12 +33,15 @@ function Form(props) {
     } else {
       try {
         await registerClient(form)
+        props.clientInfo(form)
         props.func()
       } catch (err) {
         console.log("Error here: " + err)
       }
     }
   }
+
+  
 
   return (
     <div className="Form">
