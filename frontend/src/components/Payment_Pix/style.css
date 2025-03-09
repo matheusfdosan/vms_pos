@@ -1,5 +1,5 @@
 .Pix_img{
-    width: 150px ;
+    width: fit-content ;
     height: 270px ;
     margin: 10px 10px 10px 10px;
 }

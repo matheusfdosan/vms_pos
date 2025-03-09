@@ -39,10 +39,6 @@ function Home() {
     }
   }
 
-  const handleFinalizePurchase = () => {
-    setisOpen(true)
-  }
-
   const handleRemoveProduct = () => {
     if (productCode.length == 0 || productCode.length < 5) {
       setMessage("O código deve conter 5 dígitos")
@@ -56,8 +52,10 @@ function Home() {
             return index
           }
         })
-        const updatedProducts = products.filter((_, index) => index !== getIndex[0]);
-        setProducts(updatedProducts);
+        const updatedProducts = products.filter(
+          (_, index) => index !== getIndex[0]
+        )
+        setProducts(updatedProducts)
       }
     }
   }
@@ -100,7 +98,17 @@ function Home() {
                 Remover
               </button>
             </div>
-            <Btn name={"Finalizar Compra"} f={handleFinalizePurchase} />
+            <Btn
+              name={"Finalizar Compra"}
+              f={() => {
+                if (products.length !== 0) {
+                  setMessage("")
+                  setisOpen(true)
+                } else {
+                  setMessage("Adicione algum produto para finalizar a compra")
+                }
+              }}
+            />
           </div>
           <P_card
             productsInfo={products}
@@ -184,10 +192,13 @@ function Home() {
               )}
 
               <div id="btns-cancel-end">
-                <Btn name={"Finalizar Compra"} f={() => setShowForm(true)} />
+                {isPaid && <Btn name={"Obter Nota Fiscal"} f={() => console.log("Nota Fiscal")}/>}
+                {!isPaid && <Btn name={"Finalizar Compra"} f={() => setShowForm(true)} />}
 
+                {/* {!isPaid && <Btn name={"Obter Nota Fiscal"} f={() => setShowInvoice(true)} />} */}
+                
                 <Btn
-                  name={"Cancelar Compra"}
+                  name={!isPaid ? "Cancelar Compra" : "Fechar"}
                   f={() => {
                     setisOpen(false)
                     setShowForm(false)
@@ -205,6 +216,7 @@ function Home() {
                   func={() => {
                     setIsPaid(true)
                     setShowForm(false)
+                    // função de nova compra
                   }}
                   func2={() => setShowForm(false)}
                 />
