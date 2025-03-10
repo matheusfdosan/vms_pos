@@ -12,7 +12,7 @@ function Products({ data }) {
   const [isaddModal, setaddModal] = useState(false)
   const [newProduct, setNewProduct] = useState({
     id: "00000",
-    name: "Undefined",
+    name: "Não definido",
     img: "https://cdn-icons-png.flaticon.com/512/446/446110.png",
     price: "00.00",
   })

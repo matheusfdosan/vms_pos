@@ -1,6 +1,7 @@
 .products-container {
   background-color: #f2f2f2;
-  margin: 10px auto 0 auto ;
+  margin: 10px auto 0 auto;
+  padding-bottom: 30px;
 }
 
 .container_products {
@@ -39,7 +40,7 @@
   background-color: #3032b1;
 }
 
-.Add_form{
+.Add_form {
   display: flex;
   flex-direction: column;
   top: 50%;
@@ -47,25 +48,25 @@
   transform: translate(-50%, -50%);
   font-size: 12px;
   gap: 9px;
-  width: 350px ;
+  width: 350px;
   padding: 20px;
   height: fit-content;
   z-index: 999999999;
   position: fixed;
-  background-color: #FFFFFF;
-  color: #4F4F4F;
+  background-color: #ffffff;
+  color: #4f4f4f;
   border-radius: 10px;
   box-shadow: 0px 0px 56px -5px rgba(184, 184, 184, 1);
   -webkit-box-shadow: 0px 0px 56px -5px rgba(184, 184, 184, 1);
-    -moz-box-shadow: 0px 0px 56px -5px rgba(184, 184, 184, 1);
+  -moz-box-shadow: 0px 0px 56px -5px rgba(184, 184, 184, 1);
 }
 
-  .Add_form input {
-    height: 25px;
-    border-radius: 5px;
-    border: 2px solid #5d5fef52;
-    padding-left: 5px;
-  }
+.Add_form input {
+  height: 25px;
+  border-radius: 5px;
+  border: 2px solid #5d5fef52;
+  padding-left: 5px;
+}
 
 .Add_btnf {
   color: #f2f2f2;
@@ -79,12 +80,14 @@
   cursor: pointer;
 }
 
-div.products-container > div.all-products-container > div > button:nth-child(11) {
+div.products-container
+  > div.all-products-container
+  > div
+  > button:nth-child(11) {
   margin-top: 5px;
-
 }
 
-.title_add{
+.title_add {
   font-size: 18px;
-  color: #4F4F4F;
+  color: #4f4f4f;
 }

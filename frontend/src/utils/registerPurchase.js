@@ -6,7 +6,7 @@ export default async function registerPurchase(client, products) {
     const productsItems = []
 
     products.map((product) => {
-      productsItems.push({ item: product.id })
+      productsItems.push({ item: [product.name, product.price, ] })
     })
 
     const response = await axios({
