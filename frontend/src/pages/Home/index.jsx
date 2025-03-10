@@ -105,7 +105,7 @@ function Home() {
               <span id="msg">{message}</span>
             </div>
 
-            <div className="btns">
+            <div className="main-btns">
               <button className="add_btn" onClick={handleAddProduct}>
                 Adicionar
               </button>

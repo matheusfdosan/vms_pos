@@ -55,7 +55,7 @@ main {
 
 main .main-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
   width: 90%;
@@ -93,10 +93,10 @@ main .main-container {
 }
 
 
-.btns {
+.main-btns {
   display: flex;
-  flex-direction: column;
-  gap: 200px;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .add_btn {
