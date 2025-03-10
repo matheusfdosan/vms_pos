@@ -8,7 +8,21 @@ const DashboardComponent = React.lazy(() => import("./pages/Dashboard"))
 import { Suspense } from "react"
 
 createRoot(document.getElementById("root")).render(
-  <Suspense fallback={<div>Carregando...</div>}>
+  <Suspense
+    fallback={
+      <div
+        styles={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Carregando...
+      </div>
+    }
+  >
     <Router>
       <Routes>
         <Route path="/" element={<HomeComponent />} />
