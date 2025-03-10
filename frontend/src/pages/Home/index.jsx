@@ -67,7 +67,7 @@ function Home() {
     try {
       generatePDF(client, products, paymentMethod)
     } catch (error) {
-      console.error('Error generating invoice PDF:', error)
+      console.error("Error generating invoice PDF:", error)
     }
   }
 
@@ -221,6 +221,8 @@ function Home() {
                     setisOpen(false)
                     setShowForm(false)
                     setIsPaid(false)
+                    setProducts([])
+                    setProductCode("")
                   }}
                 />
               </div>
