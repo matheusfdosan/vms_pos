@@ -1,0 +1,38 @@
+.Pcontainer{
+    display: flex;
+    flex-direction: column;
+    margin: 0 180px;
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.seach-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.Search_input{
+    height: 30px ;
+    width: 98%;
+    padding-left: 10px;
+}
+
+
+.Plist {
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F2F2;
+    width: auto;
+    height: auto;
+    gap: 0px;
+    box-sizing: none;
+    margin: 0px;
+    
+}
+
+.Plist strong {
+    font-weight: normal;
+}

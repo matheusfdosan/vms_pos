@@ -1,0 +1,91 @@
+header {
+  width: 100%;
+  background-color: #0003ff;
+}
+
+header .header-container {
+  padding: 20px 0;
+  background-color: #0003ff;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+ 
+}
+
+header .header-container img {
+  width: 110px;
+  height: 55px;
+}
+
+header h2 {
+  font-weight: 500;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+}
+
+.left_btn {
+  background-color: #f2f2f2;
+  padding: 4px;
+  width: 99px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  cursor: pointer;
+}
+
+.left_btn:focus {
+  background-color: #c9c9c9;
+}
+
+.right_btn {
+  background-color: #f2f2f2;
+  padding: 4px;
+  width: 99px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
+.right_btn:focus {
+  background-color: #c9c9c9;
+}
+
+.flipR_button {
+  background-color: #5d5fef;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateX(50%);
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  border-radius: 80px;
+  width: 60px;
+  height: 60px;
+}
+
+.flipR_button img {
+  width: 15px;
+  height: 15px;
+  margin-right: 36px;
+}
+
+.dashboard-container {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #f2f2f2;
+}

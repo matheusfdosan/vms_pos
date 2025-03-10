@@ -1,0 +1,48 @@
+.imgs {
+  display: flex;
+  width: 200px;
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 200px;
+  margin-left: 20px;
+}
+
+.img1 {
+  width: 200px;
+  height: 300px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.img2 {
+  width: 300px;
+  height: 90px;
+  cursor: move;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.draggable {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  cursor: move;
+  user-select: none; /* Impede seleção de texto */
+}
+
+.draggable.drag-start {
+  opacity: 0.5; /* Efeito visual ao iniciar o arrasto */
+}
+
+#dropzone {
+  width: 300px;
+  height: 300px;
+  border: 2px dashed gray;
+  margin-top: 20px;
+}
+
+#dropzone.drag-over {
+  background-color: #e0e0e0; /* Feedback visual na zona de drop */
+}

@@ -1,0 +1,29 @@
+.PurchaseOther{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    gap: 300px;
+    width: 100%;
+    height: 60px;
+    border-radius: 9px;
+    margin-bottom: 15px;
+}
+
+.purchaseContainer {
+    width: 96%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin: auto;
+}
+
+.invoice_btn{
+    background-color: #4144FB;
+    color: #FFFFFF;
+    border: none;
+    width: 140px;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
