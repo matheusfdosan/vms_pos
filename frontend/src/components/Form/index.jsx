@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./style.css"
 import registerClient from "../../utils/registerClient.js"
 import registerPurchase from "../../utils/registerPurchase.js"
+import Loading from "../Loading"
 
 function Form(props) {
   const [form, setForm] = useState({
@@ -10,6 +11,7 @@ function Form(props) {
     cpf: "",
   })
   const [message, setMessage] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleChangeInput = ({ target }) => {
     const { name, value } = target
@@ -28,17 +30,21 @@ function Form(props) {
   }
 
   const handleSendClientData = async () => {
+    setLoading(true)
     const { name, email, cpf } = form
     if (name.length === 0 || email.length === 0 || cpf.length !== 11) {
       setMessage("Preencha todos os campos corretamente!")
+      setLoading(false)
     } else {
       try {
         await registerClient(form)
         await registerPurchase(form, props.allProducts)
         props.clientInfo(form)
         props.func()
+        setLoading(false)
       } catch (err) {
         console.log("Error here: " + err)
+        setLoading(false)
       }
     }
   }
@@ -86,6 +92,8 @@ function Form(props) {
         <button onClick={handleSendClientData}>{props.name4}</button>
         <button onClick={props.func2}>Fechar</button>
       </div>
+      
+      {loading && <Loading />}
     </div>
   )
 }

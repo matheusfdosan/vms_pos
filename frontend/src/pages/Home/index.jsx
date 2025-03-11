@@ -15,7 +15,7 @@ import Payment_Money from "../../components/Payment_Money"
 import Payment_Credit from "../../components/Payment_Credit"
 import getProduct from "../../utils/getProduct"
 import generatePDF from "../../utils/pdfGenerator"
-import registerPurchase from "../../utils/registerPurchase"
+import Loading from "../../components/Loading"
 
 function Home() {
   const [isOpen, setisOpen] = useState(false)
@@ -26,29 +26,37 @@ function Home() {
   const [message, setMessage] = useState("")
   const [products, setProducts] = useState([])
   const [client, setClient] = useState()
+  const [loading, setLoading] = useState(false)
 
   const handleAddProduct = async () => {
+    setLoading(true)
     if (productCode.length == 0 || productCode.length < 5) {
       setMessage("O código deve conter 5 dígitos")
+      setLoading(false)
     } else {
       setMessage("")
       const productRaw = await getProduct(productCode)
 
       if (productRaw === undefined) {
         setMessage("Digite um código válido!")
+        setLoading(false)
       } else {
         setProducts((prev) => [...prev, productRaw])
+        setLoading(false)
       }
     }
   }
 
   const handleRemoveProduct = () => {
+    setLoading(true)
     if (productCode.length == 0 || productCode.length < 5) {
       setMessage("O código deve conter 5 dígitos")
+      setLoading(false)
     } else {
       setMessage("")
       if (!products.find((product) => product.id === productCode)) {
         setMessage("Digite um código válido!")
+        setLoading(false)
       } else {
         const getIndex = products.map((product, index) => {
           if (product.id === productCode) {
@@ -59,6 +67,7 @@ function Home() {
           (_, index) => index !== getIndex[0]
         )
         setProducts(updatedProducts)
+        setLoading(false)
       }
     }
   }
@@ -116,11 +125,14 @@ function Home() {
             <Btn
               name={"Finalizar Compra"}
               f={() => {
+                setLoading(true)
                 if (products.length !== 0) {
                   setMessage("")
                   setisOpen(true)
+                  setLoading(false)
                 } else {
                   setMessage("Adicione algum produto para finalizar a compra")
+                  setLoading(false)
                 }
               }}
             />
@@ -132,6 +144,8 @@ function Home() {
           />
         </div>
       </main>
+
+      {loading && <Loading />}
 
       {isOpen && (
         <div className="Purchase_modal" id="Purchase_modal">

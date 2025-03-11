@@ -7,6 +7,7 @@ import Plus_icon from "../../assets/Plus_icon.png"
 
 //componentes
 import Prod_card from "../../components/Prod_card"
+import Loading from "../../components/Loading"
 
 function Products({ data }) {
   const [isaddModal, setaddModal] = useState(false)
@@ -16,6 +17,7 @@ function Products({ data }) {
     img: "https://cdn-icons-png.flaticon.com/512/446/446110.png",
     price: "00.00",
   })
+  const [loading, setLoading] = useState(false)
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target
@@ -27,12 +29,15 @@ function Products({ data }) {
   }
 
   const handleAddNewProduct = async () => {
+    setLoading(true)
     try {
       await newProductService(newProduct)
       document.location.reload()
       setaddModal(false)
+      setLoading(false)
     } catch (error) {
       console.log("error to add new product: " + error)
+      setLoading(false)
     }
   }
 
@@ -94,6 +99,7 @@ function Products({ data }) {
           return <Prod_card key={index} product={product} />
         })}
       </div>
+      {loading && <Loading />}
     </div>
   )
 }

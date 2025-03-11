@@ -3,13 +3,15 @@ import { useEffect, useState } from "react"
 import getClientName from "../../utils/getClientName"
 import "./style.css"
 import BrazilReal from "../../utils/monetaryFormat"
-
+import Loading from "../../components/Loading"
 function Purchase({ data }) {
   const [client, setClient] = useState("")
   const [total, setTotal] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchClient = async () => {
+        setLoading(true)
       try {
         const client = await getClientName(data.client_cpf)
         setClient(client[0].name)
@@ -17,8 +19,11 @@ function Purchase({ data }) {
         data.items.map((item) => {
           setTotal((prev) => prev + Number(item.item[1]))
         })
+        setLoading(false)
+
       } catch (err) {
         console.log("Error to get Client: " + err)
+        setLoading(false)
       }
     }
     fetchClient()
@@ -27,8 +32,8 @@ function Purchase({ data }) {
 
   const handleInvoice = () => {
     try {
-      console.log({name: client}, data.items);
-      pdfGenerator({name: client}, data.items)
+      console.log({ name: client }, data.items)
+      pdfGenerator({ name: client }, data.items)
     } catch (error) {
       console.error("Error generating invoice PDF:", error)
     }
@@ -47,6 +52,8 @@ function Purchase({ data }) {
             Ver nota Fiscal
           </button>
         </div>
+
+        {loading && <Loading />}
       </div>
     </>
   )
