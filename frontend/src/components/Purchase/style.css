@@ -27,3 +27,11 @@
     border-radius: 8px;
     cursor: pointer;
 }
+
+.purchaseContainer strong {
+    font-weight: bold;
+}
+
+#price {
+    color: #21a51c
+}

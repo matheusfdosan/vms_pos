@@ -160,7 +160,7 @@ function Home() {
                     onClick={() => setPaymentMethod("Débito")}
                     style={{
                       borderBottom: `.5px solid ${
-                        paymentMethod === "debit" ? "#1e1e1e" : "transparent"
+                        paymentMethod === "Débito" ? "#1e1e1e" : "transparent"
                       }`,
                     }}
                   >
@@ -174,7 +174,7 @@ function Home() {
                     onClick={() => setPaymentMethod("Crédito")}
                     style={{
                       borderBottom: `.5px solid ${
-                        paymentMethod === "credit" ? "#1e1e1e" : "transparent"
+                        paymentMethod === "Crédito" ? "#1e1e1e" : "transparent"
                       }`,
                     }}
                   >
@@ -188,7 +188,7 @@ function Home() {
                     onClick={() => setPaymentMethod("Pix")}
                     style={{
                       borderBottom: `.5px solid ${
-                        paymentMethod === "pix" ? "#1e1e1e" : "transparent"
+                        paymentMethod === "Pix" ? "#1e1e1e" : "transparent"
                       }`,
                     }}
                   >
@@ -202,7 +202,7 @@ function Home() {
                     onClick={() => setPaymentMethod("Dinheiro")}
                     style={{
                       borderBottom: `.5px solid ${
-                        paymentMethod === "money" ? "#1e1e1e" : "transparent"
+                        paymentMethod === "Dinheiro" ? "#1e1e1e" : "transparent"
                       }`,
                     }}
                   >

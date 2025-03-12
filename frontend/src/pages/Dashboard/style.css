@@ -13,7 +13,6 @@ header .header-container {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
- 
 }
 
 header .header-container img {
@@ -34,7 +33,6 @@ header h2 {
 .options button strong {
   font-size: 16px;
   font-weight: 500;
-
 }
 
 .left_btn {
@@ -72,10 +70,9 @@ header h2 {
   background-color: #5d5fef;
   cursor: pointer;
   border: none;
-  position: absolute;
+  position: fixed;
   top: 50%;
-  right: 0;
-  transform: translateX(50%);
+  left: -30px;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -87,7 +84,7 @@ header h2 {
 .flipR_button img {
   width: 15px;
   height: 15px;
-  margin-right: 36px;
+  margin-right: 13px;
 }
 
 .dashboard-container {

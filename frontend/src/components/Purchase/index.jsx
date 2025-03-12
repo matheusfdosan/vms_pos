@@ -44,9 +44,7 @@ function Purchase({ data }) {
       <div className="PurchaseOther">
         <div className="purchaseContainer">
           <span>
-            <strong>
-              {client} comprou ${BrazilReal.format(total)} em produtos
-            </strong>
+            <strong>{client}</strong> comprou <strong id='price'>${BrazilReal.format(total)}</strong> em produtos
           </span>
           <button className="invoice_btn" onClick={handleInvoice}>
             Ver nota Fiscal

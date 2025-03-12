@@ -36,15 +36,20 @@ main {
   background-color: #5d5fef;
   cursor: pointer;
   border: none;
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: -24px;
+  left: -30px;
   display: flex;
   justify-content: right;
   align-items: center;
   border-radius: 80px;
   width: 60px;
   height: 60px;
+  transition: background-color 200ms ease;
+}
+
+.flip_button:hover {
+  background-color: #8183e6;
 }
 
 .flip_button img {
@@ -89,9 +94,7 @@ main .main-container {
 
 #msg {
   color: #f83e3e;
-  
 }
-
 
 .main-btns {
   display: flex;
@@ -153,8 +156,6 @@ main .main-container {
   animation-duration: 0.9s;
 }
 
-
-
 @keyframes slideUp {
   from {
     top: 300px;
@@ -213,7 +214,6 @@ main .main-container {
   color: #ff3d3d;
   transition: background-color 200ms ease, color 200ms ease;
 }
-
 
 #btns-cancel-end > button:last-child:hover {
   background-color: #ff3d3d;

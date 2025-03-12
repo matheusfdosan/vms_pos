@@ -96,7 +96,7 @@ function Prod_card({ product }) {
             name="name"
             value={prod.name}
             onChange={({target}) => {
-              setNewProduct(prevProducts => ({...prevProducts, name: target.value}))
+              setProd(prevProducts => ({...prevProducts, name: target.value}))
             }}
             placeholder="Leite Moça"
             autoComplete="off"
@@ -108,7 +108,7 @@ function Prod_card({ product }) {
             name="img"
             value={prod.img}
             onChange={({target}) => {
-              setNewProduct(prevProducts => ({...prevProducts, img: target.value}))
+              setProd(prevProducts => ({...prevProducts, img: target.value}))
             }}
             autoComplete="off"
           />
