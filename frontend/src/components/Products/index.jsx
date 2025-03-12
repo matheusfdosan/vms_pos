@@ -18,28 +18,27 @@ function Products({ data }) {
     price: "00.00",
   })
   const [loading, setLoading] = useState(false)
-
-  const handleChangeInput = (e) => {
-    const { name, value } = e.target
-
-    setNewProduct((prevProd) => ({
-      ...prevProd,
-      [name]: value,
-    }))
-  }
+  const [msg, setMsg] = useState("")
 
   const handleAddNewProduct = async () => {
     setLoading(true)
-    try {
-      await newProductService(newProduct)
-      document.location.reload()
-      setaddModal(false)
+  if (newProduct.id.length === 0 || newProduct.id.length < 5 || newProduct.name.length === 0 || newProduct.img.length === 0 || newProduct.price.length === 0) {
+      setMsg("Preencha todos os campos!")
       setLoading(false)
-    } catch (error) {
-      console.log("error to add new product: " + error)
-      setLoading(false)
+      return
+    } else {
+      try {
+        await newProductService(newProduct)
+        document.location.reload()
+        setaddModal(false)
+        setLoading(false)
+      } catch (error) {
+        console.log("error to add new product: " + error)
+        setLoading(false)
+      }
     }
   }
+
 
   return (
     <div className="products-container">
@@ -57,7 +56,9 @@ function Products({ data }) {
               type="text"
               name="name"
               value={newProduct.name}
-              onChange={handleChangeInput}
+              onChange={({target}) => {
+                setNewProduct(prevProducts => ({...prevProducts, name: target.value}))
+              }}
             />
 
             <p>Código</p>
@@ -65,7 +66,10 @@ function Products({ data }) {
               type="text"
               name="id"
               value={newProduct.id}
-              onChange={handleChangeInput}
+              onChange={({ target }) => {
+                if (/^\d{0,5}$/.test(target.value))
+                  setNewProduct(prevProducts => ({...prevProducts, id: target.value}))
+              }}
             />
 
             <p>Imagem(URL)</p>
@@ -73,7 +77,9 @@ function Products({ data }) {
               type="text"
               name="img"
               value={newProduct.img}
-              onChange={handleChangeInput}
+              onChange={({target}) => {
+                setNewProduct(prevProducts => ({...prevProducts, img: target.value}))
+              }}
             />
 
             <p>Preço</p>
@@ -81,8 +87,14 @@ function Products({ data }) {
               type="text"
               name="price"
               value={newProduct.price}
-              onChange={handleChangeInput}
+              onChange={({ target }) => {
+                if (/^\d*(\.\d{0,2})?$/.test(target.value))
+                  setNewProduct(prevProducts => ({...prevProducts, price: target.value}))
+              }}
+              placeholder="ex: 12.34"
             />
+
+            <span id="msg">{msg}</span>
 
             <button className="Add_btnf" onClick={handleAddNewProduct}>
               Adicionar
