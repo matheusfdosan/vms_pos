@@ -1,14 +1,15 @@
 import "./style.css"
 import Edit_icon from "../../assets/Edit_icon.png"
 import Delete_icon from "../../assets/Delete_icon.png"
-import deleteProduct from "../../utils/deleteProduct"
 import { useState } from "react"
 import BrazilReal from "../../utils/monetaryFormat"
 import updateProduct from "../../utils/updateProduct"
+import Loading from "../../components/Loading"
+import ConfirmModal from "../../components/ConfirmModal"
 
 function Prod_card({ product }) {
   const [isModal, setisModal] = useState(false)
-
+  const [msg, setMsg] = useState("")
   const [prod, setProd] = useState({
     id: product.id,
     img: product.img,
@@ -16,33 +17,39 @@ function Prod_card({ product }) {
     price: product.price,
     oldCode: product.id,
   })
+  const [loading, setLoading] = useState(false)
+  const [confirmModal, setConfirmModal] = useState(false)
 
   const handleUpdateProduct = async () => {
-    try {
-      await updateProduct(prod)
-      setisModal(false)
-      document.location.reload()
-    } catch (err) {
-      console.log("error to update product" + err)
+    setLoading(true)
+    if (
+      prod.id.length === 0 ||
+      prod.id.length < 5 ||
+      prod.name.length === 0 ||
+      prod.img.length === 0 ||
+      prod.price.length === 0
+    ) {
+      setMsg("Preencha todos os campos!")
+      setLoading(false)
+    } else {
+      try {
+        await updateProduct(prod)
+        setisModal(false)
+        document.location.reload()
+        setLoading(false)
+      } catch (err) {
+        console.log("error to update product" + err)
+        setLoading(false)
+      }
     }
-  }
-
-  const handleChangeInput = (e) => {
-    const { name, value } = e.target
-
-    setProd((prevProd) => ({
-      ...prevProd,
-      [name]: value,
-    }))
   }
 
   const handleDeleteProduct = async () => {
-    try {
-      await deleteProduct(prod.id)
-      document.location.reload()
-    } catch (error) {
-      console.error("Error to delete a product" + err)
-    }
+    setConfirmModal(true)
+  }
+
+  const settedOptions = (opt) => {
+    setConfirmModal(opt)
   }
 
   return (
@@ -75,13 +82,48 @@ function Prod_card({ product }) {
         <div className="Edit_form">
           <h2 className="title">Editar Produto:</h2>
 
+          <p>Código</p>
+          <input
+            type="text"
+            name="id"
+            value={prod.id}
+            placeholder="12345"
+            onChange={({ target }) => {
+              if (/^\d{0,5}$/.test(target.value))
+                setProd((prevProducts) => ({
+                  ...prevProducts,
+                  id: target.value,
+                }))
+            }}
+            autoComplete="off"
+          />
+
           <p>Nome</p>
           <input
             type="text"
             name="name"
             value={prod.name}
-            onChange={handleChangeInput}
+            onChange={({ target }) => {
+              setProd((prevProducts) => ({
+                ...prevProducts,
+                name: target.value,
+              }))
+            }}
             placeholder="Leite Moça"
+            autoComplete="off"
+          />
+
+          <p>Imagem</p>
+          <input
+            type="text"
+            name="img"
+            value={prod.img}
+            onChange={({ target }) => {
+              setProd((prevProducts) => ({
+                ...prevProducts,
+                img: target.value,
+              }))
+            }}
             autoComplete="off"
           />
 
@@ -91,28 +133,17 @@ function Prod_card({ product }) {
             name="price"
             value={prod.price}
             placeholder="9.99"
-            onChange={handleChangeInput}
+            onChange={({ target }) => {
+              if (/^\d*(\.\d{0,2})?$/.test(target.value))
+                setProd((prevProducts) => ({
+                  ...prevProducts,
+                  price: target.value,
+                }))
+            }}
             autoComplete="off"
           />
 
-          <p>Imagem</p>
-          <input
-            type="text"
-            name="img"
-            value={prod.img}
-            onChange={handleChangeInput}
-            autoComplete="off"
-          />
-
-          <p>Código</p>
-          <input
-            type="text"
-            name="id"
-            value={prod.id}
-            placeholder="12345"
-            onChange={handleChangeInput}
-            autoComplete="off"
-          />
+          <span id="msg">{msg}</span>
 
           <button className="Btn_form" onClick={handleUpdateProduct}>
             Atualizar
@@ -122,6 +153,15 @@ function Prod_card({ product }) {
             Cancelar
           </button>
         </div>
+      )}
+
+      {loading && <Loading />}
+      {confirmModal && (
+        <ConfirmModal
+          message="Deseja mesmo deletar esse produto?"
+          option={settedOptions}
+          id={prod.id}
+        />
       )}
     </div>
   )

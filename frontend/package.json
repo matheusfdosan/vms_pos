@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "vite build && cp dist/index.html dist/404.html",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -15,7 +15,6 @@
     "jspdf": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-draggable": "^4.4.6",
     "react-router-dom": "^7.2.0"
   },
   "devDependencies": {

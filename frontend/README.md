@@ -1,4 +1,4 @@
-<h1 align="center"> VM Softwares - POS - Backend </h1>
+<h1 align="center"> VM Softwares - POS - Frontend </h1>
 
 <p align="center">
 O sistema de controle de fluxo para a empresa VM Softwares, desenvolvido com Fastify e Node.js, tem como objetivo otimizar a gestão de vendas e operações da empresa. 

@@ -20,7 +20,7 @@ const pdfGenerator = (client, purchases) => {
   doc.text(
     `Total: ${BrazilReal.format(total)}`,
     10,
-    40 + purchases.length * 10 + 10
+    30 + purchases.length * 10 + 10
   )
 
   const fileName = `nota_fiscal_${client.name}.pdf`

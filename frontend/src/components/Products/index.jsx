@@ -7,6 +7,7 @@ import Plus_icon from "../../assets/Plus_icon.png"
 
 //componentes
 import Prod_card from "../../components/Prod_card"
+import Loading from "../../components/Loading"
 
 function Products({ data }) {
   const [isaddModal, setaddModal] = useState(false)
@@ -16,23 +17,31 @@ function Products({ data }) {
     img: "https://cdn-icons-png.flaticon.com/512/446/446110.png",
     price: "00.00",
   })
-
-  const handleChangeInput = (e) => {
-    const { name, value } = e.target
-
-    setNewProduct((prevProd) => ({
-      ...prevProd,
-      [name]: value,
-    }))
-  }
+  const [loading, setLoading] = useState(false)
+  const [msg, setMsg] = useState("")
 
   const handleAddNewProduct = async () => {
-    try {
-      await newProductService(newProduct)
-      document.location.reload()
-      setaddModal(false)
-    } catch (error) {
-      console.log("error to add new product: " + error)
+    setLoading(true)
+    if (
+      newProduct.id.length === 0 ||
+      newProduct.id.length < 5 ||
+      newProduct.name.length === 0 ||
+      newProduct.img.length === 0 ||
+      newProduct.price.length === 0
+    ) {
+      setMsg("Preencha todos os campos!")
+      setLoading(false)
+      return
+    } else {
+      try {
+        await newProductService(newProduct)
+        document.location.reload()
+        setaddModal(false)
+        setLoading(false)
+      } catch (error) {
+        console.log("error to add new product: " + error)
+        setLoading(false)
+      }
     }
   }
 
@@ -40,9 +49,11 @@ function Products({ data }) {
     <div className="products-container">
       <div className="all-products-container">
         <h2>Todos os Produtos</h2>
+        
         <button className="Addp" onClick={() => setaddModal(true)}>
           <img src={Plus_icon} alt="" />
         </button>
+
         {isaddModal && (
           <div className="Add_form">
             <h2 className="title_add">Adicione um produto</h2>
@@ -52,7 +63,12 @@ function Products({ data }) {
               type="text"
               name="name"
               value={newProduct.name}
-              onChange={handleChangeInput}
+              onChange={({ target }) => {
+                setNewProduct((prevProducts) => ({
+                  ...prevProducts,
+                  name: target.value,
+                }))
+              }}
             />
 
             <p>Código</p>
@@ -60,7 +76,13 @@ function Products({ data }) {
               type="text"
               name="id"
               value={newProduct.id}
-              onChange={handleChangeInput}
+              onChange={({ target }) => {
+                if (/^\d{0,5}$/.test(target.value))
+                  setNewProduct((prevProducts) => ({
+                    ...prevProducts,
+                    id: target.value,
+                  }))
+              }}
             />
 
             <p>Imagem(URL)</p>
@@ -68,7 +90,12 @@ function Products({ data }) {
               type="text"
               name="img"
               value={newProduct.img}
-              onChange={handleChangeInput}
+              onChange={({ target }) => {
+                setNewProduct((prevProducts) => ({
+                  ...prevProducts,
+                  img: target.value,
+                }))
+              }}
             />
 
             <p>Preço</p>
@@ -76,8 +103,17 @@ function Products({ data }) {
               type="text"
               name="price"
               value={newProduct.price}
-              onChange={handleChangeInput}
+              onChange={({ target }) => {
+                if (/^\d*(\.\d{0,2})?$/.test(target.value))
+                  setNewProduct((prevProducts) => ({
+                    ...prevProducts,
+                    price: target.value,
+                  }))
+              }}
+              placeholder="ex: 12.34"
             />
+
+            <span id="msg">{msg}</span>
 
             <button className="Add_btnf" onClick={handleAddNewProduct}>
               Adicionar
@@ -94,6 +130,7 @@ function Products({ data }) {
           return <Prod_card key={index} product={product} />
         })}
       </div>
+      {loading && <Loading />}
     </div>
   )
 }
