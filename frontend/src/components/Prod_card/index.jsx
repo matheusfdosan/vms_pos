@@ -1,11 +1,11 @@
 import "./style.css"
 import Edit_icon from "../../assets/Edit_icon.png"
 import Delete_icon from "../../assets/Delete_icon.png"
-import deleteProduct from "../../utils/deleteProduct"
 import { useState } from "react"
 import BrazilReal from "../../utils/monetaryFormat"
 import updateProduct from "../../utils/updateProduct"
 import Loading from "../../components/Loading"
+import ConfirmModal from "../../components/ConfirmModal"
 
 function Prod_card({ product }) {
   const [isModal, setisModal] = useState(false)
@@ -18,10 +18,17 @@ function Prod_card({ product }) {
     oldCode: product.id,
   })
   const [loading, setLoading] = useState(false)
+  const [confirmModal, setConfirmModal] = useState(false)
 
   const handleUpdateProduct = async () => {
     setLoading(true)
-    if (prod.id.length === 0 || prod.id.length < 5 || prod.name.length === 0 || prod.img.length === 0 || prod.price.length === 0) {
+    if (
+      prod.id.length === 0 ||
+      prod.id.length < 5 ||
+      prod.name.length === 0 ||
+      prod.img.length === 0 ||
+      prod.price.length === 0
+    ) {
       setMsg("Preencha todos os campos!")
       setLoading(false)
     } else {
@@ -37,14 +44,12 @@ function Prod_card({ product }) {
     }
   }
 
-
   const handleDeleteProduct = async () => {
-    try {
-      await deleteProduct(prod.id)
-      document.location.reload()
-    } catch (error) {
-      console.error("Error to delete a product" + err)
-    }
+    setConfirmModal(true)
+  }
+
+  const settedOptions = (opt) => {
+    setConfirmModal(opt)
   }
 
   return (
@@ -85,7 +90,10 @@ function Prod_card({ product }) {
             placeholder="12345"
             onChange={({ target }) => {
               if (/^\d{0,5}$/.test(target.value))
-                setProd(prevProducts => ({ ...prevProducts, id: target.value }))
+                setProd((prevProducts) => ({
+                  ...prevProducts,
+                  id: target.value,
+                }))
             }}
             autoComplete="off"
           />
@@ -95,8 +103,11 @@ function Prod_card({ product }) {
             type="text"
             name="name"
             value={prod.name}
-            onChange={({target}) => {
-              setProd(prevProducts => ({...prevProducts, name: target.value}))
+            onChange={({ target }) => {
+              setProd((prevProducts) => ({
+                ...prevProducts,
+                name: target.value,
+              }))
             }}
             placeholder="Leite Moça"
             autoComplete="off"
@@ -107,8 +118,11 @@ function Prod_card({ product }) {
             type="text"
             name="img"
             value={prod.img}
-            onChange={({target}) => {
-              setProd(prevProducts => ({...prevProducts, img: target.value}))
+            onChange={({ target }) => {
+              setProd((prevProducts) => ({
+                ...prevProducts,
+                img: target.value,
+              }))
             }}
             autoComplete="off"
           />
@@ -121,7 +135,10 @@ function Prod_card({ product }) {
             placeholder="9.99"
             onChange={({ target }) => {
               if (/^\d*(\.\d{0,2})?$/.test(target.value))
-                setProd(prevProducts => ({ ...prevProducts, price: target.value }))
+                setProd((prevProducts) => ({
+                  ...prevProducts,
+                  price: target.value,
+                }))
             }}
             autoComplete="off"
           />
@@ -139,7 +156,13 @@ function Prod_card({ product }) {
       )}
 
       {loading && <Loading />}
-
+      {confirmModal && (
+        <ConfirmModal
+          message="Deseja mesmo deletar esse produto?"
+          option={settedOptions}
+          id={prod.id}
+        />
+      )}
     </div>
   )
 }
